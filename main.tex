@@ -1,7 +1,25 @@
-\documentclass[10pt]{book}
+% https://www.sharelatex.com/blog/2013/08/02/thesis-series-pt1.html
+% https://www.sharelatex.com/blog/2013/08/06/thesis-series-pt2.html
+
+\documentclass[10pt,twoside]{book}
+
+\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+
 \usepackage[utf8]{inputenc}
+
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{Chapter \thechapter}
+\fancyfoot{}
+\fancyfoot[LE,RO]{\thepage}
+\fancyfoot[LO,CE]{End-User Authoring of Gestural Interactions}
+\fancyfoot[CO,RE]{Mehmet Aydın Baytaş}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
 
 \title{
 	{End-User Authoring of Gestural Interactions}\\
