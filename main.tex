@@ -3,7 +3,7 @@
 
 \documentclass[10pt,twoside]{book}
 
-\usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage[a5paper,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
 
 \usepackage[utf8]{inputenc}
 
@@ -11,7 +11,6 @@
 \graphicspath{ {images/} }
 
 \usepackage{fancyhdr}
-\pagestyle{fancy}
 \fancyhead{}
 \fancyhead[RO,LE]{Chapter \thechapter}
 \fancyfoot{}
@@ -31,6 +30,8 @@
 \date{2014-09-01}
 
 \maketitle
+
+\pagestyle{empty}
 
 \chapter*{Abstract}
 
@@ -55,6 +56,8 @@ Evren Yantaç, Ahmet Börütecene, Oğuz Turan Buruk, Damla Çay, Özge Genç, A
 Çağatay Başdoğan, Hakan Ürey, Metin Sezgin, Kaan Akşit
 
 \tableofcontents
+
+\pagestyle{fancy}
 
 \chapter{Introduction}
 \input{chapters/1-introduction}
