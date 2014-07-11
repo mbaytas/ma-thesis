@@ -1,19 +1,115 @@
-\section{Motivation}
+\section{Motivation} %----------------------------------------------------------
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Historically, using the alignment and motion of human limbs as an input modality for human-computer interfaces has been accomplished through intrusive methods - by placing markers or sensors on the body. Up until recently, non-intrusive sensing of human limb positions has been limited to research efforts \parencite{Moeslund:2006, Moeslund:2001, Gavrila:1999}. In recent years, vision-based skeletal tracking sensors have become commercially available from a variety of established vendors such as Microsoft\footnote{\href{http://www.microsoft.com/en-us/kinectforwindows/}{microsoft.com/en-us/kinectforwindows}} (Figure~\ref{fig:kinect}) and Asus\footnote{\href{http://www.asus.com/Multimedia/Motion_Sensor_Products/}{www.asus.com/Multimedia/Motion\_Sensor\_Products}}. Non-intrusive - or \emph{perceptual} \parencite{Turk:2000, Crowley:2000} - sensing of body movements has thus become widely accessible for both commercial and hobbyist applications \parencite{Francese:2012}.
 
-\section{Scope}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{kinect}
+\caption{The Microsoft Kinect sensor is equipped with a depth camera that can "see" the positions and motion of human limbs.}
+\label{fig:kinect}
+\end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+There are a variety of computing applications where the non-intrusive detection of human limb positions can be desirable as an input modality. Gaming is an obvious one (see Figure~\ref{fig:kinect-gaming}), where using movements with "prior mappings" to real-world happenings increases immersion \parencite{Cairns:2014}. Another one is user interfaces on public interactive systems: An input modality that does not require physical contact is often cheaper to deploy and maintain, and more hygienic to use. Of course, there are numerous other contexts where hygene considerations make a touchless interface may be desirable: Cooking, gardening, working on a dirty mechanism, and performing surgery \parencite{Wen:2013} come to mind. Other applications for perceptual interfaces include convenient control of smart homes \parencite{Tang:2013}, interactive art and musical instruments\footnote{\href{http://vimeo.com/45417241}{vimeo.com/45417241}}, interfaces for manipulating 3D images \parencite{Gallo:2013}, and spatial medicine \parencite{Lozano-Quilis:2013, Huang:2011, Simmons:2013}.
 
-\section{Aim}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{kinect-gaming}
+\caption{Gaming with the Microsoft Kinect.}
+\label{fig:kinect-gaming}
+\end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+The design and development of perceptual interfaces requires that \emph{gestures} - limb positions and movements that constitute inputs to the interface - be \emph{authored} in a machine-readable manner and mapped to events within the interactive system. This can be done in a textual programming environment using tools supplied by vendors of gesture-sensing hardware\footnote{\href{http://www.microsoft.com/en-us/kinectforwindowsdev/}{microsoft.com/en-us/kinectforwindowsdev}}\footnote{\href{http://www.softkinetic.com}{softkinetic.com}} or third parties\footnote{\href{http://kinecttoolbox.codeplex.com}{kinecttoolbox.codeplex.com}}. Using textual programming to author gestures, however, has drawbacks - both for adept software developers and for comparatively non-technical users such as designers, artists, hobbyists or researchers in fields other than computing. (I will henceforth refer to these users who produce software not as an end, but as a means towards goals in their own domain, as \emph{end-users} \parencite{Ko:2011}). Specifically; for end-users, textual programming embodies a significant \emph{gulf of execution} – a chasm between the user's goals and the actions taken within a system to achieve those goals – since it introduces additional tasks like setting up the programming environment and getting used to the development ecosystem. For both end-users and software developers, textual programming embodies a significant \emph{gulf of evaluation} - a gap between a system's output and the users's expectations and intentions - since they do not fully support the embodied \parencite{Dourish:2004},  reflective \parencite{Schon:1984}, and experiential \parencite{Lindell:2014} practices inherent in the design, construction and evaluation \parencite{Hartmann:2006} of these highly interactive artifacts \parencite{Myers:2000, Lim:2008}. (See Figure~\ref{fig:gulfs} for a visualization of the \emph{gulf of execution} and the \emph{gulf of evaluation}. See \parencite{Norman:1986, Norman:2002} for a detailed discussion on the gulfs.)
 
-\subsection{Research Questions}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{gulfs}
+\caption{The \emph{gulf of execution} and the \emph{gulf of evaluation}. The gulfs pertain to unidirectional aspects of interaction: The \emph{gulf of execution} lies between the user's goals and the interactive system; the \emph{gulf of evaluation} divorces the interactive system from the users's expectations and intentions.}
+\label{fig:gulfs}
+\end{figure}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Using appropriate tools for a job helps bridge the gulfs of evaluation and execution.
 
-\subsection{Hypothesis and Expected Results}
+This thesis presents my attempt at producing an appropriate tool to support the design and development of perceptual gesture-based interfaces by end-users.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+\section{Scope} %---------------------------------------------------------------
+
+In human-computer interaction (HCI) and interaction design (IxD) literature, the usage of the word \emph{gesture} is ambiguous: Depending on the context, it may denote finger strokes on a touchscreen \parencite{Lu:2013}, deformations inflicted on a tangible input device \parencite{Warren:2013}, full-body poses \parencite{Walter:2013}, even finger movements on a keyboard \parencite{Zhang:2014}. For the purporses of this manuscript; the following definition, adapted from \cite{Kurtenbach:1990}, will be used:
+
+\begin{quote}
+\emph{A gesture is a movement or position of a human body part that conveys information.}
+\end{quote}
+
+By design, in order to accomodate existing works, this definition is broad. It allows for the use of any body part in gesturing as well as the use of sensing devices such as mouse, styli and gloves. It does not require an explicit intention to justify gesturing, thus accommodating non-command user interfaces \parencite{Nielsen:1993} such as those that respond to affective \parencite{Kapur:2005} and habitual \parencite{Liu:2009} gestures.
+
+More specifically, I use the term \emph{mid-air gesture} to denote gestures that carry the following two characteristics:
+
+\begin{enumerate}
+\item The gesture should be performed in a volume where limbs can move freely in 3 dimensions; e.g. free space. This excludes gestures that are constrained to affect a tangible medium; e.g. a keyboard, a touch-sensitive surface, or a shape display \parencite{Follmer:2013}.
+\item The gesture-sensing hardware should detect the movements and/or location of human body parts perceptually, without requiring physical contact; e.g. with a camera. This excludes systems that sense gestures using devices that must be worn, wielded, or touched; e.g. a mouse, a ring\footnote{\href{http://www.wearfin.com/}{wearfin.com}}\footnote{\href{https://www.hellonod.com/}{hellonod.com}}\footnote{\href{http://logbar.jp/ring/}{logbar.jp/ring}}, or an accelerometer \parencite{Kela:2006, Ashbrook:2010}.
+\end{enumerate}
+
+The gesture sensing input device used during the course of this work was a Microsoft \emph{Kinect for Xbox 360}; chosen due to its availability. The device employs an infrared projector-camera pair to capture 3D \emph{depth images}. If what resembles a typical human body is present in the depth image, the positions (relative to the sensor) of its large limbs are detected using machine learning \parencite{Girshick:2011, Shotton:2011, Shotton:2012, Shotton:2013}. A \emph{skeletal model} of the user is produced in this fashion (Figure~\ref{fig:intro-skeleton}). The alignment and motion of the skeletal model is then used to to control interactive applications.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{intro-skeleton}
+\caption{Skeletal tracking from a depth image.}
+\label{fig:intro-skeleton}
+\end{figure}
+
+The Microsoft \emph{Kinect for Windows Software Development Kit (SDK)} version 1.8 was used to implement gesture sensing. The capabilities of the Kinect sensor and the SDK are not limited to skeletal tracking; they also include the detection of hand gestures, speech recognition, background removal from videos, facilitating proxemic interaction \parencite{Ballendat:2010}, fusing color and 3D images, and fusing data from multiple sensors\footnote{\href{http://blogs.msdn.com/b/kinectforwindows/archive/2013/09/17/updated-sdk-with-html5-kinect-fusion-improvements-and-more.aspx}{blogs.msdn.com/b/kinectforwindows/archive/2013/09/17/updated-sdk-with-html5-kinect-fusion-improvements-and-more.aspx}}. These topics, however, lie outside the scope of this work.
+
+In kinesiology, human movements are classified according to movement precision \parencite{Haibach:2011}: \emph{Gross motor skills} denote large and comparatively imprecise movements produced by large muscles; e.g. jumping, or lifting weights. \emph{Fine motor skills} involve smaller movements with higher accuracy and precision; e.g. typing, or writing. Note that gestures do not always belong strictly to one of two discrete classes. Rather, the distinction between fine and gross gestures forms a continuum characterized by the size of the engaged musculature and the trade-off between force and precision \parencite{Edwards:2010} (Figure~\ref{fig:fine-gross-continuum}). One limitation of the skeletal tracking technology used for this work is that it can only detect gross gestures\footnote{Currently, the Kinect SDK does have support for hand gestures. However, this feature was not available while the design work described in this thesis was done.}. Thus, this work deals only with issues related to the use of \emph{gross movements} of the human limbs as an interaction modality in computing.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{fine-gross-continuum}
+\caption{The continuum of \emph{fine} vs. \emph{gross} movements.}
+\label{fig:fine-gross-continuum}
+\end{figure}
+
+In sum, the scope of this work covers the design and development of a \emph{software tool for authoring gross mid-air gestures} for interactive computing systems that employ \emph{skeleton tracking perceptual input devices}.
+
+\section{Aim} %-----------------------------------------------------------------
+
+The aim of this thesis is to document the design, development, deployment and evaluation of a \emph{software application for authoring gross mid-air gestures} for \emph{skeletal tracking perceptual input devices}.
+
+The features and the user interface of this application are geared towards supporting the activities of \emph{end-users} rather than adept computer programmers. The methods employed in the design and evaluation of the application are selected to be appropriate for this purpose. The practices employed for the construction and deployment of the application also reflect its end-user focus: The application must perform well and reliably on users' computers, be easy to obtain and set up, and be maintainable to facilitate rapid adaptation to evolving technologies and user needs \parencite{McConnell:2009, Brooks:1995}.
+
+\subsection{Research Questions} %-----------------------------------------------
+
+The main research question pursued in this thesis is as follows:
+
+\begin{center}
+\emph{How can end-users' authoring of gross mid-air gestures for skeletal tracking interfaces be supported with a software tool?}
+\end{center}
+
+The main question breaks down into the following sub-questions that align with the research activities:
+
+\begin{itemize}
+\item What are the desiderata and design considerations that would pertain to mid-air gesture authoring software for end-users?
+\item What methods should be used to elicit the desiderata and design considerations from the target users?
+\item What are the technical considerations that would pertain to the application?
+\item What methods are appropriate to evaluate the application?
+\end{itemize}
+
+\subsection{Hypothesis and Expected Result} %----------------------------------
+
+I hypothesize that a suitably designed gesture authoring tool will accomplish the following:
+
+\begin{itemize}
+\item It will enable \emph{end-users} with no experience in textual programming and/or gestural interfaces to introduce gesture control to computing applications that serve their own goals.
+\item It will provide \emph{developers} and \emph{designers} of gestural interfaces with a rapid prototyping tool that can be used to experientially evaluate designs.
+\item By providing an appropriate representation of the design space, it will expose the capabilities and limitations of the technology and be fit to serve \emph{educational} purposes.
+\end{itemize}
+
+This application constitutes an artifact of \emph{research through design} \parencite{Frayling:1993}. Thus it is expected to fullfill the following criteria proposed in \cite{Zimmerman:2007}:
+
+\begin{itemize}
+\item \emph{Process.} The methods employed must be selected rationally and documented rigorously.
+\item \emph{Invention.} Various topics must be integrated in a novel fashion to create the artifact.
+\item \emph{Relevance.} The artifact must be situated within a real, current context; while supporting a shift towards a justifiably preferable state.
+\item \emph{Extensibility.} The work must enable the future exploitation of the knowledge derived from it.
+\end{itemize}
+
+The expected result from this work is a software application that will accomplish the goals above and constitue an authentic contribution as an artifact of research through design.

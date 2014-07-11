@@ -1,24 +1,55 @@
 % https://www.sharelatex.com/blog/2013/08/02/thesis-series-pt1.html
-% https://www.sharelatex.com/blog/2013/08/06/thesis-series-pt2.html
 
 \documentclass[10pt,twoside]{book}
 
-\usepackage[a5paper,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+% Set page size and margins
+\usepackage[a4paper,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
 
 \usepackage[utf8]{inputenc}
 
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
-\usepackage{fancyhdr}
-\fancyhead{}
-\fancyhead[RO,LE]{Chapter \thechapter}
-\fancyfoot{}
-\fancyfoot[LE,RO]{\thepage}
-\fancyfoot[LO,CE]{End-User Authoring of Gestural Interactions}
-\fancyfoot[CO,RE]{Mehmet Aydın Baytaş}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
+% Clickable ToC, citations etc.
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+						hyperfootnotes=true,
+						linktoc=all,
+						linkcolor=black,
+						citecolor=blue,
+					  filecolor=blue,
+					  urlcolor=blue}
+
+\usepackage[style=sigchi]{biblatex}
+\addbibresource{references.bib}
+
+% % Headers & footers
+% \usepackage{fancyhdr}
+% \fancyhead{}
+% \fancyhead[RO,LE]{Chapter \thechapter}
+% \fancyfoot{}
+% \fancyfoot[LE,RO]{\thepage}
+% \fancyfoot[CO,RE]{End-User Authoring of Gestural Interactions}
+% \renewcommand{\headrulewidth}{0.4pt}
+% \renewcommand{\footrulewidth}{0.4pt}
+
+% Microtypography
+\usepackage{microtype}
+
+% Fucking quotation marks!
+\usepackage[autostyle,english=american]{csquotes}
+\MakeOuterQuote{"}
+
+% Multiple footnotes
+\usepackage[multiple]{footmisc}
+
+% Make captions smaller
+\usepackage[labelsep=endash,font={footnotesize,bf}]{caption}
+
+% http://tex.stackexchange.com/questions/37006/biblatex-style-matching-stock-acm-style
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -31,33 +62,37 @@
 
 \maketitle
 
-\pagestyle{empty}
-
-\chapter*{Abstract}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\chapter*{Dedication}
-
-This dissertation is dedicated to my friend Hasan Sinan Bank, who has shown me how quickly and easily things get done, once you actually sit down and do them.
-
-\chapter*{Prior Publication}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-\chapter*{Acknowledgements}
-
-Oğuzhan Özcan and Yücel Yemez
-
-Tilbe Göksun
-
-Evren Yantaç, Ahmet Börütecene, Oğuz Turan Buruk, Damla Çay, Özge Genç, Ahmet Güzererler, Barış Serim, İlker Temuzkuşu
-
-Çağatay Başdoğan, Hakan Ürey, Metin Sezgin, Kaan Akşit
+% \pagestyle{empty}
+%
+% \chapter*{Abstract}
+%
+% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+%
+% \chapter*{Dedication}
+%
+% This dissertation is dedicated to my friend Hasan Sinan Bank, who has shown me how quickly and easily things get done, once you actually sit down and do them.
+%
+% \chapter*{Prior Publication}
+%
+% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+%
+% \chapter*{Acknowledgements}
+%
+% Oğuzhan Özcan and Yücel Yemez
+%
+% Tilbe Göksun
+%
+% Evren Yantaç, Ahmet Börütecene, Oğuz Turan Buruk, Damla Çay, Özge Genç, Ahmet Güzererler, Barış Serim, İlker Temuzkuşu
+%
+% Çağatay Başdoğan, Hakan Ürey, Metin Sezgin, Kaan Akşit
+%
+% Above all, I thank my mother and father for, well, everything.
 
 \tableofcontents
 
-\pagestyle{fancy}
+% \listoffigures
+
+% \pagestyle{fancy}
 
 \chapter{Introduction}
 \input{chapters/1-introduction}
@@ -77,8 +112,9 @@ Evren Yantaç, Ahmet Börütecene, Oğuz Turan Buruk, Damla Çay, Özge Genç, A
 \chapter{Conclusion}
 \input{chapters/6-conclusion}
 
+\printbibliography
+
 \appendix
-\chapter{Source Code for Hotspotizer}
-\input{chapters/appendix-source}
+\input{chapters/appendix-attributions}
 
 \end{document}

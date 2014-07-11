@@ -2,7 +2,11 @@
 .DS_Store
 .Trashes
 
+# Dev stuff
+_works
+
 # LaTeX stuff
+_out/
 *.aux
 *.glo
 *.idx

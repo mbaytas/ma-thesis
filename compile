@@ -1,0 +1,18 @@
+pdflatex main &&
+pdflatex main &&
+
+biber main &&
+biber main &&
+
+pdflatex main &&
+pdflatex main &&
+
+rm main.aux
+rm main.bbl
+rm main.bcf
+rm main.blg
+rm main.lof
+rm main.log
+rm main.out
+rm main.run.xml
+rm main.toc
