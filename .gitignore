@@ -3,7 +3,7 @@
 .Trashes
 
 # Dev stuff
-_works
+_src
 
 # LaTeX stuff
 _out/
@@ -30,3 +30,6 @@ _out/
 *.mtc1
 *.out
 *.synctex.gz
+
+# PDFs
+*.pdf

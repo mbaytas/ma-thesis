@@ -1,6 +1,7 @@
 pdflatex main &&
 pdflatex main &&
 
+rm -rf `biber --cache` &&
 biber main &&
 biber main &&
 

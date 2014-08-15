@@ -1,81 +1,159 @@
 % https://www.sharelatex.com/blog/2013/08/02/thesis-series-pt1.html
 
-\documentclass[10pt,twoside]{book}
-
-% Set page size and margins
-\usepackage[a4paper,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\documentclass[10pt, twoside]{book}
 
 \usepackage[utf8]{inputenc}
+\usepackage[letterpaper, top=36mm, bottom=36mm, bindingoffset=6mm]{geometry}
+\renewcommand*{\familydefault}{\sfdefault}
+\usepackage[labelsep=endash, font={footnotesize}]{caption}
+\usepackage{sidecap} % Captions beside images
+\usepackage{microtype} % Microtypography shit
+\usepackage{tabulary} % Pretty tables support
+\usepackage{array} % For proper table design
+% \usepackage[font=sf]{floatrow} % Sans serif font in tables
+\usepackage{indentfirst} % Uniform indentation
+\usepackage[multiple]{footmisc} % For multiple footnotes
+\usepackage{titling} % Provides \thedate, \theauthor, \thetitle after \maketitle
 
+% Sans serif fonts for headings
+%\usepackage{sectsty}
+%\allsectionsfont{\sffamily}
+
+% Bibliography shit
+\usepackage[style=authoryear-comp, backref=true, maxcitenames=3, firstinits=true, uniquename=false, sortcites=true]{biblatex}
+\addbibresource{references.bib}
+
+% Pictures shit
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
 % Clickable ToC, citations etc.
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,
-						hyperfootnotes=true,
+						hyperfootnotes=false,
 						linktoc=all,
 						linkcolor=black,
 						citecolor=blue,
 					  filecolor=blue,
 					  urlcolor=blue}
 
-\usepackage[style=sigchi]{biblatex}
-\addbibresource{references.bib}
-
-% % Headers & footers
-% \usepackage{fancyhdr}
-% \fancyhead{}
-% \fancyhead[RO,LE]{Chapter \thechapter}
-% \fancyfoot{}
-% \fancyfoot[LE,RO]{\thepage}
-% \fancyfoot[CO,RE]{End-User Authoring of Gestural Interactions}
-% \renewcommand{\headrulewidth}{0.4pt}
-% \renewcommand{\footrulewidth}{0.4pt}
-
-% Microtypography
-\usepackage{microtype}
-
-% Fucking quotation marks!
-\usepackage[autostyle,english=american]{csquotes}
+% Handle quotation marks in source
+\usepackage[autostyle, english=american]{csquotes}
 \MakeOuterQuote{"}
 
-% Multiple footnotes
-\usepackage[multiple]{footmisc}
+% Headers & footers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhf{}
+\fancyhead[CE]{\thetitle}
+\fancyhead[CO]{\nouppercase{\leftmark}}
+\fancyfoot[CE,CO]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
-% Make captions smaller
-\usepackage[labelsep=endash,font={footnotesize,bf}]{caption}
+% Blank pages have no header or footer
+%\clearpage{\pagestyle{blank}\cleardoublepage}
+\usepackage{emptypage}
 
-% http://tex.stackexchange.com/questions/37006/biblatex-style-matching-stock-acm-style
+% This snippet kills headers on auto generated blank pages before chapters
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+\hbox{}
+\thispagestyle{plain}
+\newpage
+\if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother
 
+% Comma delimiter for citations
+% tex.stackexchange.com/questions/134063
+\renewcommand*{\nameyeardelim}{\addcomma\space}
+
+% Possessive authoryear citations
+% http://tex.stackexchange.com/questions/14785
+\usepackage{xstring}
+\newrobustcmd*{\mkbibpossess}[1]{%
+  \IfEndWith{#1}{s}
+    {'}
+    {\IfEndWith{#1}{sh}
+      {'}
+      {\IfEndWith{#1}{sj}
+        {'}
+        {\IfEndWith{#1}{z}
+          {'}
+          {'s}}}}}
+\DeclareNameFormat{labelname:poss}{% Based on labelname from biblatex.def
+  \ifcase\value{uniquename}%
+    \usebibmacro{name:last}{#1}{#3}{#5}{#7}%
+  \or
+    \ifuseprefix
+      {\usebibmacro{name:first-last}{#1}{#4}{#5}{#8}}
+      {\usebibmacro{name:first-last}{#1}{#4}{#6}{#8}}%
+  \or
+    \usebibmacro{name:first-last}{#1}{#3}{#5}{#7}%
+  \fi
+  \usebibmacro{name:andothers}%
+  \ifthenelse{\value{listcount}=\value{liststop}}
+    {\ifmorenames
+      {'s}
+      {\StrRemoveBraces{#1}[\cbxnobraces]%
+        \IfEndWith{\cbxnobraces}{s}
+          {'}
+          {\IfEndWith{\cbxnobraces}{sh}
+            {'}
+            {\IfEndWith{\cbxnobraces}{sj}
+              {'}
+              {\IfEndWith{\cbxnobraces}{z}
+                {'}
+                {'s}}}}}}
+    {}}
+\DeclareFieldFormat{shorthand:poss}{%
+  \ifnameundef{labelname}{#1\mkbibpossess{#1}}{#1}}
+\DeclareFieldFormat{citetitle:poss}{\mkbibemph{#1}\mkbibpossess{#1}}
+\DeclareFieldFormat{label:poss}{#1\mkbibpossess{#1}}
+\newrobustcmd*{\posscitealias}{%
+  \AtNextCite{%
+    \DeclareNameAlias{labelname}{labelname:poss}%
+    \DeclareFieldAlias{shorthand}{shorthand:poss}%
+    \DeclareFieldAlias{citetitle}{citetitle:poss}%
+    \DeclareFieldAlias{label}{label:poss}}}
+\newrobustcmd*{\posscite}{%
+  \posscitealias%
+  \textcite}
+\newrobustcmd*{\Posscite}{\bibsentence\posscite}
+\newrobustcmd*{\posscites}{%
+  \posscitealias%
+  \textcites}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
-\title{
-	{End-User Authoring of Gestural Interactions}\\
-	{\large Koç University}
-}
+\frontmatter
+
+\title{End-User Authoring of Mid-Air Gestural Interfaces}
 \author{Mehmet Aydın Baytaş}
 \date{2014-09-01}
 
 \maketitle
-
-% \pagestyle{empty}
 %
 % \chapter*{Abstract}
 %
-% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-%
 % \chapter*{Dedication}
-%
 % This dissertation is dedicated to my friend Hasan Sinan Bank, who has shown me how quickly and easily things get done, once you actually sit down and do them.
-%
-% \chapter*{Prior Publication}
-%
-% Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-%
+
+\chapter*{Notice of Prior Publication}
+
+Parts of this thesis have been adapted from the following publications:
+
+\begin{quote}
+Mehmet Aydın Baytaş, Yücel Yemez and Oğuzhan Özcan. 2014. Hotspotizer: End-User Authoring of Mid-Air Gestural Interactions. In Proceedings of the 8th Nordic Conference on Human-Computer Interaction (NordiCHI '14).
+\end{quote}
+
+\begin{quote}
+Mehmet Aydın Baytaş, Yücel Yemez and Oğuzhan Özcan. 2014. User Interface Paradigms for Visually Authoring Mid-air Gestures: A Survey and a Provocation. In Proceedings of the Workshop on Engineering Gestures for Multimodal Interfaces (EGMI 2014).
+\end{quote}
+
 % \chapter*{Acknowledgements}
 %
 % Oğuzhan Özcan and Yücel Yemez
@@ -88,28 +166,29 @@
 %
 % Above all, I thank my mother and father for, well, everything.
 
+\setcounter{tocdepth}{1}
 \tableofcontents
 
-% \listoffigures
-
-% \pagestyle{fancy}
+\mainmatter
 
 \chapter{Introduction}
+\label{chp:introduction}
 \input{chapters/1-introduction}
 
 \chapter{Background and Related Work}
 \input{chapters/2-background}
 
 \chapter{Method}
+\label{chp:method}
 \input{chapters/3-method}
 
-\chapter{Hotspotizer: Authoring Mid-Air Gestural Interactions}
+\chapter{Hotspotizer: Description}
 \input{chapters/4-hotspotizer}
 
 \chapter{Hotspotizer: Design and Evaluation}
 \input{chapters/5-evaluation}
 
-\chapter{Conclusion}
+\chapter{Conclusion and Future Work}
 \input{chapters/6-conclusion}
 
 \printbibliography
