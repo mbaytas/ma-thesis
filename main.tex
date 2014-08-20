@@ -3,21 +3,20 @@
 \documentclass[10pt, twoside]{book}
 
 \usepackage[utf8]{inputenc}
-\usepackage[letterpaper, top=36mm, bottom=36mm, bindingoffset=6mm]{geometry}
+\usepackage[letterpaper, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
 \renewcommand*{\familydefault}{\sfdefault}
-\usepackage[labelsep=endash, font={footnotesize}]{caption}
-\usepackage{sidecap} % Captions beside images
-\usepackage{microtype} % Microtypography shit
-\usepackage{tabulary} % Pretty tables support
 \usepackage{array} % For proper table design
-% \usepackage[font=sf]{floatrow} % Sans serif font in tables
-\usepackage{indentfirst} % Uniform indentation
+\usepackage[labelsep=endash, font={footnotesize}]{caption}
 \usepackage[multiple]{footmisc} % For multiple footnotes
+\usepackage{indentfirst} % Uniform indentation
+\usepackage{microtype} % Microtypography shit
+\usepackage{sidecap} % Captions beside images
+\usepackage{tabulary} % Pretty tables support
 \usepackage{titling} % Provides \thedate, \theauthor, \thetitle after \maketitle
 
-% Sans serif fonts for headings
-%\usepackage{sectsty}
-%\allsectionsfont{\sffamily}
+% Give figures some space
+\setlength{\textfloatsep}{20pt plus 2pt minus 4pt}
+\setlength{\intextsep}{20pt plus 2pt minus 4pt}
 
 % Bibliography shit
 \usepackage[style=authoryear-comp, backref=true, maxcitenames=3, firstinits=true, uniquename=false, sortcites=true]{biblatex}
@@ -125,6 +124,89 @@
   \posscitealias%
   \textcites}
 
+% Pretty highlighting
+% http://tex.stackexchange.com/questions/5959
+\usepackage{soul}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{decorations.pathmorphing}
+\makeatletter
+\newcommand{\defhighlighter}[3][]{%
+  \tikzset{every highlighter/.style={color=#2, fill opacity=#3, #1}}%
+}
+\defhighlighter{yellow}{.5}
+\newcommand{\highlight@DoHighlight}{
+  \fill [ decoration = {random steps, amplitude=1pt, segment length=15pt}
+        , outer sep = -15pt, inner sep = 0pt, decorate
+        , every highlighter, this highlighter ]
+        ($(begin highlight)+(0,8pt)$) rectangle ($(end highlight)+(0,-3pt)$) ;
+}
+\newcommand{\highlight@BeginHighlight}{
+  \coordinate (begin highlight) at (0,0) ;
+}
+\newcommand{\highlight@EndHighlight}{
+  \coordinate (end highlight) at (0,0) ;
+}
+\newdimen\highlight@previous
+\newdimen\highlight@current
+\DeclareRobustCommand*\highlight[1][]{%
+  \tikzset{this highlighter/.style={#1}}%
+  \SOUL@setup
+  %
+  \def\SOUL@preamble{%
+    \begin{tikzpicture}[overlay, remember picture]
+      \highlight@BeginHighlight
+      \highlight@EndHighlight
+    \end{tikzpicture}%
+  }%
+  %
+  \def\SOUL@postamble{%
+    \begin{tikzpicture}[overlay, remember picture]
+      \highlight@EndHighlight
+      \highlight@DoHighlight
+    \end{tikzpicture}%
+  }%
+  %
+  \def\SOUL@everyhyphen{%
+    \discretionary{%
+      \SOUL@setkern\SOUL@hyphkern
+      \SOUL@sethyphenchar
+      \tikz[overlay, remember picture] \highlight@EndHighlight ;%
+    }{%
+    }{%
+      \SOUL@setkern\SOUL@charkern
+    }%
+  }%
+  %
+  \def\SOUL@everyexhyphen##1{%
+    \SOUL@setkern\SOUL@hyphkern
+    \hbox{##1}%
+    \discretionary{%
+      \tikz[overlay, remember picture] \highlight@EndHighlight ;%
+    }{%
+    }{%
+      \SOUL@setkern\SOUL@charkern
+    }%
+  }%
+  %
+  \def\SOUL@everysyllable{%
+    \begin{tikzpicture}[overlay, remember picture]
+      \path let \p0 = (begin highlight), \p1 = (0,0) in \pgfextra
+        \global\highlight@previous=\y0
+        \global\highlight@current =\y1
+      \endpgfextra (0,0) ;
+      \ifdim\highlight@current < \highlight@previous
+        \highlight@DoHighlight
+        \highlight@BeginHighlight
+      \fi
+    \end{tikzpicture}%
+    \the\SOUL@syllable
+    \tikz[overlay, remember picture] \highlight@EndHighlight ;%
+  }%
+  \SOUL@
+}
+\makeatother
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -147,11 +229,17 @@
 Parts of this thesis have been adapted from the following publications:
 
 \begin{quote}
-Mehmet Aydın Baytaş, Yücel Yemez and Oğuzhan Özcan. 2014. Hotspotizer: End-User Authoring of Mid-Air Gestural Interactions. In Proceedings of the 8th Nordic Conference on Human-Computer Interaction (NordiCHI '14).
+Mehmet Aydın Baytaş, Yücel Yemez, and Oğuzhan Özcan. 2014. Hotspotizer: End-User Authoring of Mid-Air Gestural Interactions. In Proceedings of the 8th Nordic Conference on Human-Computer Interaction (NordiCHI '14).
 \end{quote}
 
 \begin{quote}
-Mehmet Aydın Baytaş, Yücel Yemez and Oğuzhan Özcan. 2014. User Interface Paradigms for Visually Authoring Mid-air Gestures: A Survey and a Provocation. In Proceedings of the Workshop on Engineering Gestures for Multimodal Interfaces (EGMI 2014).
+Mehmet Aydın Baytaş, Yücel Yemez, and Oğuzhan Özcan. 2014. User Interface Paradigms for Visually Authoring Mid-air Gestures: A Survey and a Provocation. In Proceedings of the Workshop on Engineering Gestures for Multimodal Interfaces (EGMI 2014).
+\end{quote}
+
+Additionally, during the course of the research described in this thesis, the author has contributed to the following publication:
+
+\begin{quote}
+Oğuzhan Özcan, Ayça Ünlüer, Mehmet Aydın Baytaş, and Barış Serim. 2012. Rethinking Spherical Media Surfaces by Re-reading Ancient Greek Vases. Paper presented at the workshop "Beyond Flat Displays: Towards Shaped and Deformable Interactive Surfaces," co-located with the ACM International Conference on Interactive Tabletops and Surfaces (ITS '12).
 \end{quote}
 
 % \chapter*{Acknowledgements}
@@ -176,20 +264,20 @@ Mehmet Aydın Baytaş, Yücel Yemez and Oğuzhan Özcan. 2014. User Interface Pa
 \input{chapters/1-introduction}
 
 \chapter{Background and Related Work}
+\label{chp:background}
 \input{chapters/2-background}
 
-\chapter{Method}
-\label{chp:method}
-\input{chapters/3-method}
-
 \chapter{Hotspotizer: Description}
-\input{chapters/4-hotspotizer}
+\label{chp:hotspotizer}
+\input{chapters/3-hotspotizer}
 
 \chapter{Hotspotizer: Design and Evaluation}
-\input{chapters/5-evaluation}
+\label{chp:description}
+\input{chapters/4-design}
 
 \chapter{Conclusion and Future Work}
-\input{chapters/6-conclusion}
+\label{chp:conclusion}
+\input{chapters/5-conclusion}
 
 \printbibliography
 

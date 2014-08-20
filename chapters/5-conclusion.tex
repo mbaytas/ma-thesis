@@ -1,0 +1,47 @@
+This thesis described efforts in \highlight{developing a \emph{software tool for authoring mid-air gestures}} to support the activities of \highlight{end-users.} For this purpose, through guidelines derived from the literature and a user-centered design process; \highlight{desiderata, design considerations, and evluation strategies} were uncovered. These led to the development of a user interface paradigm based on space discretization for visualizing and declaratively manipulating mid-air gesture information. This paradigm was \highlight{implemented} in Hotspotizer, a standalone Windows application that maps mid-air gestures to commands issued from an emulated keyboard. Hotspotizer was \highlight{evaluated} through a user study and class workshop.
+
+\highlight{Findings from the evaluation sessions verify that Hotspotizer observes its design rationale and supports gesture authoring for end-users.} Using Hotspotizer, \emph{gestural interactions were implemented within minutes by users who did not have the skills} to use textual programming tools. Usage strategies and users' choices for gesture designs implied that users understood the \emph{domain expertise} embedded in the interface and leveraged their \emph{sense of personal space and proprioception} in interacting with the system. Hotspotizer was used to control other programs on a PC, making use of a \emph{common infrastructure}.
+
+Revisiting my \highlight{hypothesis} for the accomplishments of a successfully designed tool for authoring skeletal tracking gestures; evaluations demonstrate that my design accomplishes the following:
+
+\begin{itemize}
+\item Hotspotizer \highlight{enables \emph{end-users} with no experience in textual programming and/or gestural interfaces to introduce gesture control} to computing applications that serve their own goals. Results from the user study and class workshop described in Section~~\ref{sec:summative-studies} confirm this.
+\item The application \highlight{provides \emph{developers} and \emph{designers} of gestural interfaces with a rapid prototyping tool} that can be used to experientially evaluate designs. It has been used precisely for this purpose at a workshop in the context of a design-oriented classroom (Section~\ref{sec:summative-studies}).
+\item By providing an appropriate representation of the design space, Hotspotizer will exposes the capabilities and limitations of the technology and be fit to serve \highlight{\emph{educational} purposes.} This is indicated by its successful use in classroom contexts; along with participants in user studies using and expressing previously unavailable insights regarding gestural interfaces after using Hotspotizer.
+\end{itemize}
+
+As expected, Hotspotizer fullfills the criteria proposed by \textcite{Zimmerman:2007} for the evaluation of \highlight{research-through-design artifacts} \parencite{Frayling:1993}:
+
+\begin{itemize}
+\item The design and development \emph{process} employs methods that have been selected rationally and documented in this manuscript.
+\item Various topics have been integrated in a novel fashion to create an artifact with the qualities of an \emph{invention.}
+\item The resulting artifact, Hotspotizer, demonstrates \emph{relevance}. It is situated within a real, current context; while supporting a shift towards a justifiably preferable state.
+\item The work is \emph{extensible}, as it enables the future exploitation of the knowledge derived from it. Extensible insights gained during design, development and evaluation are documented in this thesis, and the software has been made freely available for use.
+\end{itemize}
+
+The result from this work is a software application that accomplishes its previously stated goals and constitutes an authentic contribution as an artifact of research through design.
+
+\section{Future Work}
+\label{sec:future-work}
+
+The research described in this thesis instigates a number of opportunities for future work.
+
+\subsection{Expanding Hotspotizer}
+
+One strand of future work may deal with expanding the expressive power of Hotspotizer by implementing new features in a user-friendly manner.
+
+While it did not come up in the user studies, I find that the current visualization style may become convoluted as gesture collections grow in size. Exploring alternative ways of visualizing many gestures within one workspace is on our agenda for future versions of the software.
+
+Currently, (as I discussed in Section~\ref{sec:hotspotizer}) Hotspotizer does not directly support "online" (REF) --- i.e. continuous --- gesturing, since it adopts a traditional event-based model for detecting and responding to gestures. As such, support for \emph{manipulative} and \emph{deictic} gestures, which are common across gesture-based user interfaces, is severely limited. As \textcite{Myers:2000} recommend, ideally, the "continuous nature of the input [should] be preserved." This, however, requires "tighter integration with application logic" \parencite{Hartmann:2007} through interfacing with a textual programming language or third-party applications integrating support for continuous input streams. Unfortunately,  the first option oversteps the scope of the Hotspotizer project (See Section~\ref{sec:formative-studies}). The second option can be explored for a limited set of third-party applications.
+
+Among other features are negative hotspots that mark space that should not be engaged when gesturing (i.e. negation \parencite{Hoste:2014}), a movable frame of reference for the workspace to enable gesturing around peripheral body parts, resizable hotspot boundaries, adjustable timeout, compositions that involve multiple limbs, and recognition of hand movements.  As implied by user studies, the capability to infer hotspots from \emph{demonstration}, and \emph{speech recognition} to control the application from a distance are features that may further accelerate user workflows.
+
+Incorporating classifier-coupled gesture recognition \parencite{Hoste:2013} could serve to alleviate recognizer errors \parencite{Myers:2000}, and, when needed, to decouple overlapping gesture definitions.
+
+\subsection{Space Discretization}
+
+A second strand of future work may focus on evaluating and refining the space discretization paradigm.
+
+The usability and expressive power of the user interface paradigm is independent from its implementation. However, due to various factors that constrain its scope, this work does not evaluate the paradigm seperately. In order to refine the user interface paradigm and support implementations in different contexts, user studies can be conducted to evaluate the difficulty of understanding and manipulating gestures visualized as hotspots in discretized space. \textcite{Kin:2002} have conducted a study that examines the speed and accuracy of understanding various representations for touch gestures. A similar study that examines representations of gross gestures may inform future work on gesture authoring and documentation.
+
+The space discretization paradigm may also have value for authoring gestures enabled using technologies other than skeletal tracking. I encourage other researchers to adopt the paradigm for use in different contexts.

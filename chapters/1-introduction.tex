@@ -30,13 +30,13 @@ The design and development of perceptual interfaces requires that \emph{gestures
 
 Using appropriate user interfaces for a job helps bridge the gulfs of evaluation and execution \parencite{Norman:2002}.
 
-This thesis presents my attempt at producing an appropriate user interface to support the design and development of perceptual gesture-based interfaces by end-users.
+This thesis presents my attempt at producing an appropriate \highlight{user interface to support the design and development of perceptual gesture-based interfaces by end-users.}
 
 \section{Aim} %-----------------------------------------------------------------
 
-The aim of this thesis is to document the design, development, deployment and evaluation of a \emph{software application for authoring gross mid-air gestures} for \emph{skeletal tracking perceptual input devices}.
+The \highlight{aim} of this thesis is to \highlight{document the design, development, deployment and evaluation of a \emph{software application for authoring gross mid-air gestures} for \emph{skeletal tracking perceptual input devices}}.
 
-The features and the user interface of this application are geared towards supporting the activities of \emph{end-users} rather than adept computer programmers. The term \emph{end-user} refers to those who utilize or produce software as a means towards goals in some other domain, rather than producing computing applications as an end \parencite{Ko:2011}. A mid-air gesture authoring tool may target diverse populations of end users including designers, artists, hobbyists, gamers and educators.
+The features and the user interface of this application are geared towards supporting the activities of \highlight{\emph{end-users}} rather than adept computer programmers. The term \highlight{\emph{end-user} refers to those who utilize or produce software as a means towards goals in their own domain}, rather than producing computing applications as an end \parencite{Ko:2011}.\ A mid-air gesture authoring tool may target diverse populations of end users including designers, artists, hobbyists, gamers and educators.
 
 The methods employed in the design and evaluation of the application are selected to be appropriate for these purposes. The practices employed for the construction and deployment of the application also reflect its end-user focus: The application must perform well and reliably on users' computers, be easy to obtain and set up, and be maintainable to facilitate rapid adaptation to evolving technologies and user needs \parencite{McConnell:2009, Brooks:1995}.
 
@@ -45,29 +45,27 @@ The methods employed in the design and evaluation of the application are selecte
 The main research question pursued in this thesis is as follows:
 
 \begin{center}
-\emph{How can end-users' authoring of gross mid-air gestures for skeletal tracking interfaces be supported with a software tool?}
+\highlight{\emph{How can end-users' authoring of gross mid-air gestures for skeletal tracking interfaces be supported with a software tool?}}
 \end{center}
 
 The main question breaks down into the following sub-questions that align with the research activities:
 
 \begin{itemize}
-\item What are the desiderata and design considerations that would pertain to mid-air gesture authoring software for end-users?
-\item What methods should be used to elicit the desiderata and design considerations from the target users?
-\item What are the technical considerations that would pertain to the application?
-\item What methods are appropriate to evaluate the application?
+\item What are the \highlight{desiderata and design considerations} that would pertain to mid-air gesture authoring software for end-users?
+\item What methods are appropriate to \highlight{evaluate} the application?
 \end{itemize}
 
-\subsection{Hypothesis and Expected Result} %----------------------------------
+\subsection{Hypothesis and Expected Results} %----------------------------------
 
 I hypothesize that a suitably designed gesture authoring tool will accomplish the following:
 
 \begin{itemize}
-\item It will enable \emph{end-users} with no experience in textual programming and/or gestural interfaces to introduce gesture control to computing applications that serve their own goals.
-\item It will provide \emph{developers} and \emph{designers} of gestural interfaces with a rapid prototyping tool that can be used to experientially evaluate designs.
-\item By providing an appropriate representation of the design space, it will expose the capabilities and limitations of the technology and be fit to serve \emph{educational} purposes.
+\item It will \highlight{enable \emph{end-users} with no experience in textual programming and/or gestural interfaces to introduce gesture control} to computing applications that serve their own goals.
+\item It will \highlight{provide \emph{developers} and \emph{designers} of gestural interfaces with a rapid prototyping tool} that can be used to experientially evaluate designs.
+\item By providing an appropriate representation of the design space, it will expose the capabilities and limitations of the technology and be fit to serve \highlight{\emph{educational} purposes.}
 \end{itemize}
 
-This application constitutes an artifact of \emph{research through design} \parencite{Frayling:1993}. Thus, it is expected to fullfill the following criteria proposed by \textcite{Zimmerman:2007} for the evaluation of such artifacts:
+This application constitutes an artifact of \highlight{\emph{research through design}} \parencite{Frayling:1993}. Thus, it is expected to fullfill the following criteria proposed by \textcite{Zimmerman:2007} for the evaluation of such artifacts:
 
 \begin{itemize}
 \item \emph{Process.} The methods employed must be selected rationally and documented rigorously.
@@ -78,7 +76,8 @@ This application constitutes an artifact of \emph{research through design} \pare
 
 The expected result from this work is a software application that will accomplish the goals above and constitue an authentic contribution as an artifact of research through design.
 
-\section{Scope} %---------------------------------------------------------------
+\section{Scope}
+\label{sec:scope}
 
 In human-computer interaction (HCI) and interaction design (IxD) literature, the usage of the word \emph{gesture} is ambiguous: Depending on the context, it may denote finger strokes on a touchscreen \parencite{Lu:2013}, deformations inflicted on a tangible input device \parencite{Warren:2013}, full-body poses \parencite{Walter:2013}, even finger movements on a keyboard \parencite{Zhang:2014}. For the purporses of this thesis; the following definition, adapted from \textcite{Kurtenbach:1990}, will be used:
 
@@ -88,9 +87,9 @@ In human-computer interaction (HCI) and interaction design (IxD) literature, the
 
 By design, in order to accomodate existing works, this definition is broad. It allows for the use of any body part in gesturing as well as the use of sensing devices such as mouse, styli and gloves. It does not require an explicit intention to justify gesturing, thus accommodating non-command user interfaces \parencite{Nielsen:1993} such as those that respond to affective \parencite{Kapur:2005} and habitual \parencite{Liu:2009} gestures.
 
-More specifically, I use the term \emph{mid-air gestures} to denote gestures that are performed in a volume where limbs can move freely in 3 dimensions; e.g. free space. This excludes gestures that are constrained to affect a tangible surface or a controller device that mechanically changes form; e.g. a keyboard, a touch-sensitive surface, or a shape display \parencite{Follmer:2013}.
+More specifically, I use the term \highlight{\emph{mid-air gestures}} to denote gestures that are performed in a volume where limbs can move freely in 3 dimensions; e.g. free space. This excludes gestures that are constrained to affect a tangible surface or a controller device that mechanically changes form; e.g. a keyboard, a touch-sensitive surface, or a shape display \parencite{Follmer:2013}.
 
-The gesture sensing input device used during the course of this work was a Microsoft \emph{Kinect for Xbox 360}; chosen from among alternatives due to its availability. The device employs an infrared projector-camera pair to capture 3D \emph{depth images}. If what resembles a typical human body is present in the depth image, the positions (relative to the sensor) of its large limbs are detected using machine learning \parencite{Girshick:2011, Shotton:2011, Shotton:2012, Shotton:2013}. A \emph{skeletal model} of the user is produced in this fashion (Figure~\ref{fig:intro-skeleton}). The alignment and motion of the skeletal model is then used to to control interactive applications. This type of gesture-sensing hardware is said to detect the movements and/or location of human body parts \emph{perceptually} --- without requiring physical contact \parencite{Turk:2000, Crowley:2000}. This excludes, from the scope of this thesis, systems that sense gestures using devices that must be worn, wielded, or touched --- e.g. a mouse, a stylus, a ring\footnote{\href{http://www.wearfin.com/}{wearfin.com}}\footnote{\href{https://www.hellonod.com/}{hellonod.com}}, or an accelerometer \parencite{Kela:2006, Ashbrook:2010}.
+The gesture sensing input device used during the course of this work was a Microsoft \emph{Kinect for Xbox 360}; chosen from among alternatives due to its availability. The device employs an infrared projector-camera pair to capture 3D \emph{depth images}. If what resembles a typical human body is present in the depth image, the positions (relative to the sensor) of its large limbs are detected using machine learning \parencite{Girshick:2011, Shotton:2011, Shotton:2012, Shotton:2013}. A \emph{skeletal model} of the user is produced in this fashion (Figure~\ref{fig:intro-skeleton}). The alignment and motion of the skeletal model is then used to to control interactive applications. This type of gesture-sensing hardware is said to detect the movements and/or location of human body parts \highlight{\emph{perceptually}} --- without requiring physical contact \parencite{Turk:2000, Crowley:2000}. This excludes, from the scope of this thesis, systems that sense gestures using devices that must be worn, wielded, or touched --- e.g. a mouse, a stylus, a ring\footnote{\href{http://www.wearfin.com/}{wearfin.com}}\footnote{\href{https://www.hellonod.com/}{hellonod.com}}, or an accelerometer \parencite{Kela:2006, Ashbrook:2010}.
 
 \begin{SCfigure}[\sidecaptionrelwidth][ht]
 \centering
@@ -101,7 +100,7 @@ The gesture sensing input device used during the course of this work was a Micro
 
 The Microsoft \emph{Kinect for Windows Software Development Kit (SDK)} version 1.8 was used to implement gesture sensing. The capabilities of the Kinect sensor and the SDK are not limited to skeletal tracking; they also include the detection of hand gestures, speech recognition, background removal from videos, facilitating proxemic interaction \parencite{Ballendat:2010}, fusing color and 3D images, and fusing data from multiple sensors. These topics, however, lie outside the scope of this work.
 
-In kinesiology, human movements are classified according to movement precision \parencite{Haibach:2011}: \emph{Gross motor skills} denote large and comparatively imprecise movements produced by large muscles; e.g. jumping, or lifting weights. \emph{Fine motor skills} involve smaller movements with higher accuracy and precision; e.g. typing, or writing. Gestures do not always belong strictly to one of two discrete classes. Rather, the distinction between fine and gross gestures forms a continuum characterized by the size of the engaged musculature and the trade-off between force and precision \parencite{Edwards:2010} (Figure~\ref{fig:fine-gross-continuum}). One limitation of the skeletal tracking technology used for this work is that it can only detect gross gestures\footnote{Currently, the Kinect SDK does have support for hand gestures. However, this feature was not available while the design work described in this thesis was done.}. Thus, this work deals specifically with issues related to the use of \emph{gross movements} of the human limbs as an interaction modality in computing.
+In kinesiology, human movements are classified according to movement precision \parencite{Haibach:2011}: \emph{Gross motor skills} denote large and comparatively imprecise movements produced by large muscles; e.g. jumping, or lifting weights. \emph{Fine motor skills} involve smaller movements with higher accuracy and precision; e.g. typing, or writing. Gestures do not always belong strictly to one of two discrete classes. Rather, the distinction between fine and gross gestures forms a continuum characterized by the size of the engaged musculature and the trade-off between force and precision \parencite{Edwards:2010} (Figure~\ref{fig:fine-gross-continuum}). One limitation of the skeletal tracking technology used for this work is that it can only detect gross gestures\footnote{Currently, the Kinect SDK does have support for hand gestures. However, this feature was not available while the design work described in this thesis was done.}. Thus, this work deals specifically with issues related to the use of \highlight{\emph{gross movements}} of the human limbs as an interaction modality in computing.
 
 \begin{SCfigure}[\sidecaptionrelwidth][ht]
 \centering
@@ -110,4 +109,16 @@ In kinesiology, human movements are classified according to movement precision \
 \label{fig:fine-gross-continuum}
 \end{SCfigure}
 
-In sum, the scope of this work covers the design and development of a \emph{software tool for authoring gross mid-air gestures} for interactive computing systems that employ \emph{skeletal tracking perceptual input devices}.
+In sum, the scope of this work covers the \highlight{design and development of a \emph{software tool for authoring gross mid-air gestures} for interactive computing systems that employ \emph{skeletal tracking perceptual input devices}.}
+
+\section{Method}
+\label{sec:method}
+
+The method that I adopted to guide the design and development of the gesture authoring tool can be summarized as follows:
+
+\begin{enumerate}
+\item \highlight{Prior work} that may inform the design of a gesture authoring tool for skeletal tracking interfaces is surveyed to \highlight{situate the work within the context} of pertinent current research, reveal \highlight{design guidelines}, and determine appropriate \highlight{strategies for design and evaluation}. Chapter~\ref{chp:background} documents this effort.
+\item \highlight{Formative studies} are conducted with a representative sample from the target user populations, using prototypes with varying levels of fidelity. The process and the results of these studies, filtered through the lens of the aforementioned design guidelines, determine the nature and the core features of the gesture authoring tool --- \emph{what} it is going to be. Section~~\ref{sec:formative-studies} describes these studies in detail.
+\item The resulting design for the gesture authoring tool is \highlight{implemented} as a working application. Various aspects of the implementation are described in Chapter~\ref{chp:hotspotizer}.
+\item \highlight{Summative studies} are conducted to assess if the implementation conforms to its design rationale and fulfills the previously stated aims for this work. Section~\ref{sec:summative-studies} describes these studies and their results.
+\end{enumerate}
