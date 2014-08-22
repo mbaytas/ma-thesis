@@ -1,13 +1,28 @@
-Hotspotizer has been developed through a user-centered design process, in order to fulfill the needs of end-users. This section describes the evolution of Hotspotizer, the evaluation of the final prototype, and insights gained throughout development and deployment.
+Hotspotizer has been developed through a process that utilizes user-centered design tools, in order to fulfill the needs of end-users. This section describes the evolution of Hotspotizer, the evaluation of the final prototype, and insights gained throughout development and deployment. Figure~\ref{fig:timeline} depicts a summary of the design and development processes on a timeline.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=\textwidth]{timeline}
+\caption{A summary of the design and development processes.}
+\label{fig:timeline}
+\end{figure}
 
 \section{Formative Studies}
 \label{sec:formative-studies}
 
-In the early stages of the design work for a tool to support authoring mid-air gestural interactions, the motivating question was \highlight{\emph{what} to build.} The result is the \highlight{identification of the desiderata and the core features of the gesture authoring interface, filtered through the lens of the design considerations} described in Section~\ref{sec:design-and-evaluation-of-tools}. Design efforts were guided largely by qualitative and semi-structured feedback from users and inspiration from related work. Many concepts, in the form of rough sketches and paper prototypes, were produced. Concepts at this early stage included an end-to-end environment for creating gesture-controlled interactive movies that fused gesture authoring and content creation in one application; ready-made widgets that pre-implemented gesture control and plugged into existing development and design environments; and tools to overlay information (such as the distance between two specific joints) onto a visualization of a skeletal model, to complement textual programming.
+\subsection{Participants}
+
+\subsection{Procedure}
+
+In the early stages of the design work for a tool to support authoring mid-air gestural interactions, the motivating question was \hl{\emph{what} to build.} The result is the \hl{identification of the desiderata and the core features of the gesture authoring interface, filtered through the lens of the design considerations} described in Section~\ref{sec:design-and-evaluation-of-tools}. Design efforts were guided largely by qualitative and semi-structured feedback from users and inspiration from related work. Many concepts, in the form of rough sketches and paper prototypes, were produced. Concepts at this early stage included an end-to-end environment for creating gesture-controlled interactive movies that fused gesture authoring and content creation in one application; ready-made widgets that pre-implemented gesture control and plugged into existing development and design environments; and tools to overlay information (such as the distance between two specific joints) onto a visualization of a skeletal model, to complement textual programming.
 
 The rough sketches, paper prototypes and mockups have been presented at a workshop to a group of 10 potential users, aged 22-31 ($\mu$=26), from diverse backgrounds. While recruited from among students and staff of a single university and not representative of a wide demographic, the participants represented the target users of Hotspotizer well. Each had different skills and interests. Among them was an industrial designer, a semi-professional musician, an electronics engineer, a computer scientist, a museum studies student, an interaction designer, a psychologists and a legal consultant. After a presentation on current design tools for mid-air gestural interfaces and our concepts, we collected feedback and made note of new ideas. Although all of the users were self-reportedly familiar with mid-air gestural interaction in the context of gaming, none had any familiarity with existing tools for authoring custom interfaces. Discussions on possible applications for custom gesture control revealed that a modular approach that can interface with a diverse variety of applications is preferable to a full-blown content creation suite. Moreover, even among users engaged in design or programming activities, tools used for these purposes varied greatly. This illustrated the value of a standalone application rather than a tool that generates code in a specific programming language or plugs into a specific environment.
 
 Another round of sketches and prototypes was prepared, some of them higher fidelity, such as a mock screencast showing the use of various modules in a gesture authoring suite. The idea of creating virtual buttons or hotspots in the space around the user and using them to define gestures was depicted in the sketches, as well as an interactive mockup developed in Processing\footnote{\href{http://processing.org/}{processing.org}} (see Figure~\ref{fig:sketches-prototypes}). Other ideas included an application that recognized static poses and a graphical language consisting of atomic primitives for composing gestures. These were presented at a second workshop with the same 10 participants. Here, the concept of space discretization was proposed by a participant, an interaction designer. Upon interacting with the mockup of an interface where free-form areas in space can be made into gesture-tracking hotspots, she commented that she often makes use of squared paper when sketching. Instead of defining free-form regions in space, why not divide space into squares and constrain hotspots to these squares? Further discussion with participants revealed that this paradigm is grasped more easily than composing with atomic actions or constraints, or even demonstration. Moreover, using a visualization of the skeletal model and the space around it allows direct manipulation \parencite{Hutchins:1985}; encapsulates the limitations and prospects of the design space; capitalizes on proprioception; and can mediate interaction through a tight feedback loop \parencite{Wilson:2012}.
+
+\subsection{Results}
+
+
 
 \begin{figure}[ht]
 \centering
@@ -21,7 +36,7 @@ Hotspotizer was developed as an implementation of this \emph{space discretizatio
 \section{Summative Studies}
 \label{sec:summative-studies}
 
-To evaluate Hotspotizer in use, two studies were conducted. The first was a study with 5 users to assess if Hotspotizer conforms to its design rationale. The second was a class workshop with 6 students working in pairs to build interactive prototypes of gestural interfaces. Qualitative results from these summative studies \highlight{confirm that Hotspotizer conforms to its design rationale} (see Figure~\ref{fig:design-guidelines-satisfied} for a summary of the observations that relate to the design guidelines).
+To evaluate Hotspotizer in use, two studies were conducted. The first was a study with 5 users to assess if Hotspotizer conforms to its design rationale. The second was a class workshop with 6 students working in pairs to build interactive prototypes of gestural interfaces. Qualitative results from these summative studies \hl{confirm that Hotspotizer conforms to its design rationale} (see Figure~\ref{fig:design-guidelines-satisfied} for a summary of the observations that relate to the design guidelines).
 
 \begin{SCfigure}[\sidecaptionrelwidth][ht]
 \centering
@@ -32,6 +47,13 @@ To evaluate Hotspotizer in use, two studies were conducted. The first was a stud
 
 \subsection{User Study}
 
+\subsubsection{Participants}
+
+\subsubsection{Procedure}
+
+\subsubsection{Results}
+
+
 For the user study, five graduate students were recruited: an industrial designer, a museum studies student, a computer scientist, a psychologist and an interaction designer. These were not the same people who participated in the previous workshops. Participants were given a pre-study questionnaire where, on average, they self-reported a low level of experience with computer programming ($\mu$=2.1 on a 5-point Likert scale) and a low-medium level of experience with using mid-air gesture-based interfaces ($\mu$=2.4).
 
 Participants were given the task of adapting a non-gestural interface for a computer game to gesture control. They were provided a PC with a Kinect sensor. The game was a side-scrolling platformer --- this style of game was selected since users were expected to be fully familiar with the game mechanics and not be distracted from the process of gesture authoring. The participants were not given specific gestures to implement, but the game required three commands to operate: \emph{left} and \emph{right} for movement, and a \emph{jump} command. Participants were required to play through and complete the first level of the game using gestures. Participants finished the first level using a keyboard and they were gave a demonstration of Hotspotizer before they designed gestures.
@@ -41,6 +63,12 @@ All five participants were able to complete the assignment successfully, within 
 Semi-structured post-study interviews revealed that users had gained insights about the workings of skeletal tracking gestural interfaces. Support for full-body postures such as jumping, along with compositions that involve multiple limbs and grab detection were reported to be desirable as additional features. This is in line with my vision for future work (see Section~\ref{sec:future-work}).
 
 \subsection{Class Workshop}
+
+\subsubsection{Participants}
+
+\subsubsection{Procedure}
+
+\subsubsection{Results}
 
 A workshop was conducted with 6 graduate students taking a course titled “Design Thinking for Interactivity.” Participants worked in groups of two, at the same time. They were given a 20-minute presentation on how the Hotspotizer interface works; and tasked with creating interactive prototypes for three different systems (one per group), following a single given use case for each system. The three systems comprised interactive digital signage for a movie theater, a penalty kick game and a video jukebox for public use. Participants were to create the visual design for the system’s screens in PowerPoint\footnote{\href{http://office.microsoft.com/en-us/powerpoint/}{office.microsoft.com/en-us/powerpoint}}, and assign gestures to shortcut keys in PowerPoint to add interactivity. Each group was provided a Kinect sensor, a PC with Hotspotizer and PowerPoint installed, and a cheat sheet that exposed keyboard commands available in PowerPoint. A diverse set of interactions is possible in this manner, including moving between screens, starting and stopping video, adjusting the volume of the system, displaying versatile animations and automatically triggering timed behavior.
 
