@@ -1,9 +1,11 @@
+This chapter presents a survey of previously published related works that inform the design of a gesture authoring tool for skeletal tracking interfaces; in order to situate the work within the context of pertinent current research, reveal insights that may inform the design of the tool, and determine appropriate strategies for design and evaluation.
+
 \section{Gestural Interaction}
 \label{sec:gestural-interaction}
 
-This section discusses dimensions that characterize gesture-based interactive systems and propose terms that clearly label pertinent concepts. Thus, the scope of research described in this thesis is situated in relation to previous works on gestural interaction.
+This section discusses dimensions that characterize gesture-based interactive systems and propose terms that clearly label pertinent concepts. Thus, the scope of and the design space for the research described in this thesis is partly situated in relation to previous works on gestural interaction.
 
-Studies related to human gesture in HCI and IxD draw from a variety of domains, including but not limited to industrial design, psychology, anthropology, linguistics and computing. Here, also drawing from a multitude of disciplines, I argue that there are three important dimensions that characterize systems that utilize gesture as the main means of interaction (Figure~\ref{fig:dimensions}):
+Studies related to human gesture in HCI and IxD draw from a variety of domains, including but not limited to industrial design, psychology, anthropology, linguistics and computing. Here, also drawing from a multitude of disciplines, I argue that there are three important dimensions that characterize the design space for systems that utilize gesture as the main means of interaction (see Figure~\ref{fig:dimensions}):
 
 \begin{enumerate}
 \item The \emph{capture medium} is a high-level description of the hardware used to recognize gestures.
@@ -11,12 +13,14 @@ Studies related to human gesture in HCI and IxD draw from a variety of domains, 
 \item The gestural \emph{engagement domain} is a description the kinds of gesture that the system utilizes.
 \end{enumerate}
 
-\begin{SCfigure}[\sidecaptionrelwidth][ht]
+\begin{SCfigure}[\sidecaptionrelwidth][b]
 \centering
-\includegraphics[width=0.7\textwidth]{todo-dimensions}
+\includegraphics[width=0.6\textwidth]{dimensions}
 \caption{Visualizing the three dimensions that characterize gesture-based interactive systems.}
 \label{fig:dimensions}
 \end{SCfigure}
+
+\clearpage
 
 The first of these dimensions, the \emph{capture medium}, describes the hardware technology used for sensing gestures. The hardware in this sense may comprise a 2-dimensional space that allows gesturing with a tangible pointing device such as a mouse or pen or a surface that detects touch events without utilizing a pointing device; tangible sensors that detect gestures in 3D space; perceptual input devices that “see” human movement from a distance; or myriad other current and emerging technologies (Figure~~\ref{fig:capture-media}).
 
@@ -28,16 +32,16 @@ Capture media also differ according to whether or not they require special input
 
 A device that allows gestural interaction does not need to afford only one capture medium. Indeed, modern smartphones offer touchscreens that allow for both equipped and unencumbered input, while they also function as equipped free-form capture media since they harbor accelerometers and gyroscopes.
 
-\begin{SCfigure}[\sidecaptionrelwidth][ht]
+\begin{SCfigure}[\sidecaptionrelwidth][t]
 \centering
-\includegraphics[width=0.7\textwidth]{todo-capture-media}
+\includegraphics[width=0.7\textwidth]{capture-media}
 \caption{Classifying capture media. A capture medium can be \emph{constrained} or \emph{free-form} depending on the space where gestures are performed, and \emph{unencumbered} or \emph{equipped} depending on the use or non-use of an input device that proxies human movement.}
 \label{fig:capture-media}
 \end{SCfigure}
 
 The second dimension, the \emph{gestural bulk} describes body parts involved in interacting with the system. Following conventional terminology in kinesiology; I classify gestures for HCI as those relying on \emph{fine motor movements}  and those that rely on \emph{gross motor movements}. \emph{Fine movements} are precise and involve small musculature; e.g. typing on a keyboard or writing with a pen. \emph{Gross movements} require the use of larger muscles and emphasize muscular force over precision; e.g. jumping or weight lifting. Section~\ref{sec:scope} describes this dimension in greater detail, in order to clarify the scope of my research.
 
-The last of the dimensions I propose to classify gesture-based interactive computing systems is the gestural \emph{engagement domain}, which describes what kinds of gestures a user interface utilizes. Psychology \parencite{McNeill:1992, McNeill:2008} often provides the basis for classifications and analyses of human gesture in HCI and IxD literature\footnote{In computing, the term \emph{classification} also refers to the outcomes from a machine learning algortihm. Here, I use the term in pertinence to the characterization of gestures.} \parencite{Eisenstein:2006, Kettebekov:2004, Wexelblat:1997}. The perspective on the classification of human gestures proposed by \textcite{Quek:2002} and extended by \textcite{Karam:2005} draws from these studies and forms an appropriate basis for my classification, albeit with modifications. I distinguish human gestures as belonging to one of four classes:
+The last of the dimensions I propose to classify gesture-based interactive computing systems is the gestural \emph{engagement domain}, which describes what kinds of gestures a user interface utilizes. Psychology \parencite{McNeill:1992, McNeill:2008} often provides the basis for classifications and analyses of human gesture in HCI and IxD literature\footnote{In computing, the term \emph{classification} also refers to the outcomes from a machine learning algorithm. Here, I use the term in pertinence to the characterization of gestures.} \parencite{Eisenstein:2006, Kettebekov:2004, Wexelblat:1997}. The perspective on the classification of human gestures proposed by \textcite{Quek:2002} and extended by \textcite{Karam:2005} draws from these studies and forms an appropriate basis for my classification, albeit with modifications. I distinguish human gestures as belonging to one of four classes:
 
 \begin{enumerate}
 \item \emph{Deictic gestures} that involve pointing to convey the identity and/or position of an entity.
@@ -68,7 +72,7 @@ In terms of the concepts introduced in this section, the \hl{scope} of this thes
 
 What differentiates an end-user from a professional programmer is their \emph{goals}: Professionals create and maintain software as an end, while end-users produce and customize software artifacts to support their own goals in some other domain \parencite{Ko:2011}. In many domains, the case for end-user programming --- rather than entrusting all development to professionals --- is mainly economical:  \textcite{Wulf:2004} argue that support for end-user programming makes software investments more efficient since empowering end-users to customize software mitigates the need for expensive development teams and processes (see Figure~\ref{fig:eud}). The effect is significant, since end-users outnumber professional programmers by orders of magnitude \parencite{Scaffidi:2005}. From a user-focused perspective, research on end-user programming is motivated by usability and engagement concerns \parencite{Germonprez:2007}; as well as the simple fact that some systems such as smart homes \parencite{Blackwell:2004} and health-related applications \parencite{Rizzo:2011, Lange:2011} must be customizable to suit individual needs \parencite{Holloway:2010}.
 
-\begin{SCfigure}[\sidecaptionrelwidth][ht]
+\begin{SCfigure}[\sidecaptionrelwidth][t]
 \centering
 \includegraphics[width=0.7\textwidth]{eud}
 \caption{Comparing the cost structure for software development, adaptation and appropriation with and without end-user programming support. Adapted from \textcite{Wulf:2004}.}
@@ -77,21 +81,13 @@ What differentiates an end-user from a professional programmer is their \emph{go
 
 This thesis covers the design and development of a gesture authoring tool for designers' prototyping novel user interfaces and end-users' extending existing interfaces with the ability to recognize and respond to custom mid-air gestures. Various works on end-user programming that inform this effort are discussed below. A complete survey of this field is beyond the scope of this work; I recommend surveys by \textcite{Paterno:2013}; and \textcite{Myers:2006} as a starting point for the interested reader.
 
-% \subsection{Visual Programming}
-
-% \subsection{Programming by Demonstation}
-
-% \subsection{Programming Environments}
-
-% \subsection{End-User Software Engineering}
-
 One strand of research on end-user programming considers issues beyond the construction and customization of software; e.g. design, testing, debugging, integration, reuse, and security. This strand, called \emph{end-user software engineering}, aims improve the \emph{quality} of software artifacts produced by end-users by leveraging knowledge derived from professional software engineering. A comprehensive review of this research is beyond the scope of this thesis. While end-users' design, specification, testing, debugging, and reuse of software artifacts are indeed relevant for a gesture authoring tool; this thesis  (as Chapter~\ref{chp:design} describes) approaches such issues from a \hl{design --- rather than software engineering --- perspective.} For the reader interested in end-user software engineering, I recommend surveys by \textcite{Burnett:2004}, and \textcite{Ko:2011}.
-
-% \subsection{Psychological Issues}
 
 A number of end-user programming researchers focus on psychological and cognitive issues that relate to end-user programmers. One objective for such research, as \textcite{Blackwell:2006} declares in his survey of the field, is "to increase our understanding of human cognition by studying a rather extreme domain of reasoning." Another objective is to tackle quality issues by informing the design of end-user programming tools and methods. Topics of interest include the difficulties of learning \parencite{Ko:2004, Pea:1987} and performing \parencite{Lewis:1987} programming-related tasks, and how people envision programming concepts \parencite{Pane:2001}.
 
 From among research on the psychology of programming, particularly relevant for a gesture authoring tool is work by \textcite{Ko:2004} where the authors identify six "learning barriers" that obstruct end-user programmers across a variety of contexts:
+
+\clearpage
 
 \begin{enumerate}
 \item \emph{Design barriers} are difficulties that are inherent in a problem, independent from how the solution is represented. They represent the inability of a learner to construct a solution to a given problem, which must be accomplished before the solution is implemented as software.
@@ -102,7 +98,7 @@ From among research on the psychology of programming, particularly relevant for 
 \item \emph{Information barriers} disrupt learners' understanding of the internal workings of the software. They manifest as learners' inability to test hypotheses they might have about how the software does what it does.
 \end{enumerate}
 
-The authors relate these learning barriers to \posscite{Norman:1986, Norman:2002} concepts of the \emph{gulf of execution} and the \emph{gulf of evaluation} (which I described in section~\ref{sec:motivation} to motivate the development of a gesture authoring tool). Specifically, they explicate that \emph{design}, \emph{coordination}, and \emph{use} barriers spawn gulfs of \emph{execution}; \emph{understanding} barriers pose gulfs of \emph{evaluation}; while \emph{selection} and \emph{information} barriers constitute gulfs of \emph{execution} and \emph{evaluation}. The authors recommend adapting \posscite{Norman:2002} recommendations for bridging the gulfs and overcoming the learning barriers.
+The authors relate these learning barriers to \posscite{Norman:1986, Norman:2002} concepts of the \emph{gulf of execution} and the \emph{gulf of evaluation} (which I described in section~\ref{sec:motivation} to motivate the development of a gesture authoring tool). Specifically, they explicate that \emph{design}, \emph{coordination}, and \emph{use} barriers spawn gulfs of \emph{execution}; \emph{understanding} barriers pose gulfs of \emph{evaluation}; while \emph{selection} and \emph{information} barriers constitute gulfs of \emph{execution} and \emph{evaluation}. The authors recommend adapting \posscite{Norman:1986, Norman:2002} recommendations for bridging the gulfs and overcoming the learning barriers.
 
 \section{Design and Evaluation of User Interface Authoring Tools}
 \label{sec:design-and-evaluation-of-tools}
@@ -127,14 +123,16 @@ In addition, \textcite{Shoemaker:2010} propose design guidelines for body-centri
 
 In sum, \hl{six guidelines derived from previous work form the basis of my design rationale} for the gesture authoring interface (Figure~\ref{fig:design-guidelines}). The first four, derived from \posscite{Olsen:2007} work, identify and address concerns that pertain to user interface design tools. The last two, derived from the work of \textcite{Shoemaker:2010}, attend to concerns related to perceptual interactions in general. Whether or not the final design for the authoring tool conforms to these guidelines is evaluated through user studies.
 
-\begin{SCfigure}[\sidecaptionrelwidth][ht]
+\begin{SCfigure}[\sidecaptionrelwidth][b]
 \centering
 \includegraphics[width=0.7\textwidth]{design-guidelines}
 \caption{Guidelines derived from the literature formed the basis of the design rationale for a gesture authoring tool.}
 \label{fig:design-guidelines}
 \end{SCfigure}
 
-Additionally, from a programming perspective (see Section~\ref{sec:end-user-programming}); \textcite{Myers:2000} identify five themes that influence the success of user interface tools:
+\clearpage
+
+Additionally, from a programming perspective (see Section~\ref{sec:end-user-programming}), \textcite{Myers:2000} identify five themes that influence the success of user interface tools:
 
 \begin{itemize}
 \item User interface tools should strive to achieve a low \emph{threshold} --- i.e. be easy to learn --- and a high \emph{ceiling} --- i.e. significant expressive power.
@@ -144,14 +142,15 @@ Additionally, from a programming perspective (see Section~\ref{sec:end-user-prog
 \item A tool should only \emph{address the parts of the user interface that are needed}.
 \end{itemize}
 
-The first of these themes is specifically captured in part by Olsen's recommendations that a tool should lower skill barriers and empower new users. A high level of expressive power is desirable, but the weight of this concern will be governed by user needs (see Section~\ref{sec:user-centered-design}). The encapsulation and simplification of expertise, along with the use of user-centered design tools and methods, integrate all of these themes.
+The first of these themes is specifically captured in part by Olsen's recommendations that a tool should lower skill barriers and empower new users. A high level of expressive power is desirable, but the weight of this concern will be governed by user needs (see Section~\ref{sec:formative-studies}). The encapsulation and simplification of expertise, along with the use of user-centered design tools and methods, integrate all of these themes.
 
 \section{Authoring Mid-Air Gestures}
+\label{sec:authoring-mid-air-gestures}
 
 This section presents an overview of prior research on gesture authoring tools which has influenced my design. While development tools provided by vendors of gesture-sensing hardware focus on supporting textual programming, ongoing research suggests a set of diverse approaches to the problem of how to represent and manipulate three-dimensional gesture data. Existing works approach the issue in three ways that constitute distinct paradigms for visually authoring mid-air gestures. These are:
 
 \begin{enumerate}
-\item Using 2-dimensional graphs of the data from the sensors that detect movement;
+\item using 2-dimensional graphs of the data from the sensors that detect movement;
 \item using a visual markup language; and,
 \item representing movement information using a timeline of
 frames.
@@ -242,9 +241,13 @@ Timelines of keyframes are used often in conjunction with programming by \emph{d
 
 \subsection{Textual Approaches}
 
+Domain-specific declarative gesture specification languages that augment general purpose programming tools are a very common approach to gesture authoring for both constrained and free-form capture media (see Section\ref{sec:gestural-interaction}). \posscite{Scholliers:2010} \emph{Midas}; \emph{GeforMT} by \textcite{Kammer:2010}; \posscite{Echtler:2012} \emph{GISpL}; \emph{GestureAgents} by \textcite{Julia:2013}; \posscite{Spano:2013} \emph{GestIT} and work by \textcite{Khandkar:2010} are examples of such efforts. Most of the works within this body of research concentrate on the formal specification \parencite{Lamsweerde:2000, Sommerville:2010} of gestures --- i.e. providing a rigorous, complete description of gesture information. As such, these tools are not designed to be utilized by end-users. The exception is the \emph{Flexible Action and Articulated Skeleton Toolkit (FAAST)} by \textcite{Suma:2013}, which provides a graphical user interface, along with an understandable grammar and vocabulary for the authoring of mid-air gestures.
+
 \subsubsection{FAAST}
 
 For declaratively authoring mid-air gestures for skeletal tracking, the \emph{Flexible Action and Articulated Skeleton Toolkit (FAAST)} \parencite{Suma:2013} provides atomic \emph{action primitives} that can be used to compose rules in plain English such as "right hand above right shoulder by at least 20 cm." (Figure~\ref{fig:faast}) These constraints specify the position of, the speed of, or the angle between limbs, as well as general body orientation. \emph{FAAST} controls other applications on the computer via mapping gestures to keyboard and mouse events. While describing gestures using atomic rules affords significant expressive power, this representation does not embody a visualization of the constraints embedded in the design space and thus may not serve to bridge the gulf of execution that obstructs end-users.
+
+\emph{FAAST} has been adopted widely among hobbyists and numerous applications that utilize the toolkit have been exhibited online\footnote{\href{http://projects.ict.usc.edu/mxr/faast/faast-video-gallery/}{projects.ict.usc.edu/mxr/faast/faast-video-gallery/}}. The authors draw attention to the permissive license that accompanies the software as they explain its popularity. Also notable in this regard is that \emph{FAAST} --- uniquely among the gesture authoring tools considered in this section --- embodies the design guideline of leveraging a common infrastructure and interfaces with arbitrary third-party applications.
 
 \begin{SCfigure}[\sidecaptionrelwidth][ht]
 \centering
@@ -255,7 +258,7 @@ For declaratively authoring mid-air gestures for skeletal tracking, the \emph{Fl
 
 \subsection{Discussion}
 
-Above, tools that exemplify user interface paradigms for visually and textually authoring mid-air gestures have been presented (Table~\ref{tab:systems-summary}). For sensor-based gesturing, the standard paradigm used to represent gesture information appears to be projecting the sensor waveforms onto a graph. Graphs appear to work well as components that represent sensor- based gestures, allow experimentation with filters and gesture recognition methods, and support direct manipulation to some extent. User studies show that while the graphs alone may not allow developers to fully grasp the connection between movements and the waveform \parencite{Ashbrook:2010}, they have been deemed useful as part of a multimodal gesture representation \parencite{Zamborlin:2014}. Using hurdles as a visual markup language offers an intuitive and expressive medium for gesture authoring, but it is not able to depict fully 3-dimensional gestures. Using spherical control points may be more conducive to direct manipulation while still affording an expressive syntax, but no implementation of this paradigm exists for authoring mid-air gestures. Finally, timelines of frames may come in handy for visualizing dynamic gestures with many moving elements, such as in skeletal tracking; but used in this fashion they allow only visualization and not manipulation.
+Above, tools that exemplify user interface paradigms for visually and textually authoring mid-air gestures have been presented (Table~\ref{tab:systems-summary}). For sensor-based gesturing, the standard paradigm used to represent gesture information appears to be projecting the sensor waveforms onto a graph. Graphs appear to work well as components that represent sensor- based gestures, allow experimentation with filters and gesture recognition methods, and support direct manipulation to some extent. User studies show that while the graphs alone may not allow developers to fully grasp the connection between movements and the waveform \parencite{Ashbrook:2010}, they have been deemed useful as part of a multimodal gesture representation \parencite{Zamborlin:2014}. Using hurdles as a visual markup language offers an intuitive and expressive medium for gesture authoring, but it is not able to depict fully 3-dimensional gestures. Using spherical control points may be more conducive to direct manipulation while still affording an expressive syntax, but no implementation of this paradigm exists for authoring mid-air gestures. Finally, timelines of frames may come in handy for visualizing dynamic gestures with many moving elements, such as in skeletal tracking; but, used in this fashion, they allow only visualization and not manipulation.
 
 \begin{table}[ht]
 \centering

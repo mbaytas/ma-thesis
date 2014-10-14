@@ -1,33 +1,81 @@
-% https://www.sharelatex.com/blog/2013/08/02/thesis-series-pt1.html
+\documentclass[11pt, twoside]{book}
 
-\documentclass[10pt, twoside]{book}
+\usepackage[a4paper,
+            top=30mm,
+            bottom=30mm,
+            outer=25mm,
+            inner=25mm,
+            bindingoffset=4mm,
+            headsep=10mm,
+            footskip=15mm]{geometry}
 
-\usepackage[utf8]{inputenc}
-\usepackage[letterpaper, top=25mm, bottom=25mm, bindingoffset=6mm]{geometry}
 \renewcommand*{\familydefault}{\sfdefault}
-\usepackage{array} % For proper table design
+
+\usepackage{array}          % For proper table design
 \usepackage[labelsep=endash, font={footnotesize}]{caption}
 \usepackage{color}
-\usepackage{emptypage} % Blank pages have no header or footer
-\usepackage[multiple]{footmisc} % For multiple footnotes
-\usepackage{indentfirst} % Uniform indentation
-\usepackage{microtype} % Microtypography shit
-\usepackage{sidecap} % Captions beside images
-\usepackage{tablefootnote}
-\usepackage{tabulary} % Pretty tables support
-\usepackage{titling} % Provides \thedate, \theauthor, \thetitle after \maketitle
+\usepackage{indentfirst}    % Uniform indentation
+\usepackage{microtype}      % Microtypography shit
+\usepackage{pdfpages}       % PDF insertion
+\usepackage{rotating}       % Sideways figures
+\usepackage{sidecap}        % Captions beside images
+\usepackage{tablefootnote}  % Footnotes in tables
+\usepackage{tabulary}       % Pretty tables support
+\usepackage[utf8]{inputenc}
+
+% Provides \thetitle
+\usepackage{titling}
+\title{End-User Authoring of Mid-Air Gestural Interactions}
+
+% Code listings
+\usepackage{listings}
+\lstset{language=Python,
+				basicstyle=\ttfamily,
+        backgroundcolor=\color[RGB]{220,221,224},
+				commentstyle=\color[RGB]{83,89,145},
+				emph={foreach, =, ==, :, and, or, not},
+				emphstyle=\textbf}
 
 % Highlighting
 \usepackage{soul}
 \renewcommand{\hl}[1]{#1} % Disables highlights
 
 % Give figures some space
-\setlength{\textfloatsep}{20pt plus 2pt minus 4pt}
-\setlength{\intextsep}{20pt plus 2pt minus 4pt}
+\setlength{\textfloatsep}{24pt plus 2pt minus 0pt}
+\setlength{\intextsep}{24pt plus 2pt minus 0pt}
 
 % Bibliography shit
-\usepackage[style=authoryear-comp, backref=true, maxcitenames=3, firstinits=true, uniquename=false, sortcites=true]{biblatex}
-\addbibresource{references.bib}
+\usepackage[style=authoryear-comp,
+            backref=true,
+            maxcitenames=3,
+            firstinits=true,
+            uniquename=false,
+            sortcites=true,
+            doi=false,
+            isbn=false,
+            url=false]{biblatex}
+\addbibresource{references/references.bib}
+\addbibresource{references/design.bib}
+\addbibresource{references/focusgroup.bib}
+\addbibresource{references/technical.bib}
+\addbibresource{references/tools.bib}
+% codydunne.blogspot.com.tr/2012/01/suppressing-bibtex-fields-for-specific.html
+\AtEveryBibitem{
+  \clearlist{address}
+  \clearfield{date}
+  \clearfield{eprint}
+  \clearfield{issn}
+  \clearlist{language}
+  \clearlist{location}
+  \clearfield{month}
+  \clearfield{series}
+  \ifentrytype{inproceedings}{
+    \clearfield{pages}
+  }{}
+  \ifentrytype{article}{
+    \clearfield{pages}
+  }{}
+}
 
 % Pictures shit
 \usepackage{graphicx}
@@ -47,6 +95,12 @@
 \usepackage[autostyle, english=american]{csquotes}
 \MakeOuterQuote{"}
 
+% Customize the look of lists
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=\parindent}
+\setlist[enumerate]{leftmargin=\parindent}
+\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
 % Headers & footers
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -62,7 +116,7 @@
 \makeatletter
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
 \hbox{}
-\thispagestyle{plain}
+\thispagestyle{empty}
 \newpage
 \if@twocolumn\hbox{}\newpage\fi\fi\fi}
 \makeatother
@@ -72,7 +126,7 @@
 \renewcommand*{\nameyeardelim}{\addcomma\space}
 
 % Possessive authoryear citations
-% http://tex.stackexchange.com/questions/14785
+% tex.stackexchange.com/questions/14785
 \usepackage{xstring}
 \newrobustcmd*{\mkbibpossess}[1]{%
   \IfEndWith{#1}{s}
@@ -127,140 +181,48 @@
   \posscitealias%
   \textcites}
 
-% Pretty highlighting
-% http://tex.stackexchange.com/questions/5959
-% \usepackage{soul}
-% \usepackage{tikz}
-% \usetikzlibrary{calc}
-% \usetikzlibrary{decorations.pathmorphing}
-% \makeatletter
-% \newcommand{\defhighlighter}[3][]{%
-%   \tikzset{every highlighter/.style={color=#2, fill opacity=#3, #1}}%
-% }
-% \defhighlighter{yellow}{.5}
-% \newcommand{\highlight@DoHighlight}{
-%   \fill [ decoration = {random steps, amplitude=1pt, segment length=15pt}
-%         , outer sep = -15pt, inner sep = 0pt, decorate
-%         , every highlighter, this highlighter ]
-%         ($(begin highlight)+(0,8pt)$) rectangle ($(end highlight)+(0,-3pt)$) ;
-% }
-% \newcommand{\highlight@BeginHighlight}{
-%   \coordinate (begin highlight) at (0,0) ;
-% }
-% \newcommand{\highlight@EndHighlight}{
-%   \coordinate (end highlight) at (0,0) ;
-% }
-% \newdimen\highlight@previous
-% \newdimen\highlight@current
-% \DeclareRobustCommand*\highlight[1][]{%
-%   \tikzset{this highlighter/.style={#1}}%
-%   \SOUL@setup
-%   %
-%   \def\SOUL@preamble{%
-%     \begin{tikzpicture}[overlay, remember picture]
-%       \highlight@BeginHighlight
-%       \highlight@EndHighlight
-%     \end{tikzpicture}%
-%   }%
-%   %
-%   \def\SOUL@postamble{%
-%     \begin{tikzpicture}[overlay, remember picture]
-%       \highlight@EndHighlight
-%       \highlight@DoHighlight
-%     \end{tikzpicture}%
-%   }%
-%   %
-%   \def\SOUL@everyhyphen{%
-%     \discretionary{%
-%       \SOUL@setkern\SOUL@hyphkern
-%       \SOUL@sethyphenchar
-%       \tikz[overlay, remember picture] \highlight@EndHighlight ;%
-%     }{%
-%     }{%
-%       \SOUL@setkern\SOUL@charkern
-%     }%
-%   }%
-%   %
-%   \def\SOUL@everyexhyphen##1{%
-%     \SOUL@setkern\SOUL@hyphkern
-%     \hbox{##1}%
-%     \discretionary{%
-%       \tikz[overlay, remember picture] \highlight@EndHighlight ;%
-%     }{%
-%     }{%
-%       \SOUL@setkern\SOUL@charkern
-%     }%
-%   }%
-%   %
-%   \def\SOUL@everysyllable{%
-%     \begin{tikzpicture}[overlay, remember picture]
-%       \path let \p0 = (begin highlight), \p1 = (0,0) in \pgfextra
-%         \global\highlight@previous=\y0
-%         \global\highlight@current =\y1
-%       \endpgfextra (0,0) ;
-%       \ifdim\highlight@current < \highlight@previous
-%         \highlight@DoHighlight
-%         \highlight@BeginHighlight
-%       \fi
-%     \end{tikzpicture}%
-%     \the\SOUL@syllable
-%     \tikz[overlay, remember picture] \highlight@EndHighlight ;%
-%   }%
-%   \SOUL@
-% }
-% \makeatother
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
 \frontmatter
 
-\title{End-User Authoring of Mid-Air Gestural Interfaces}
-\author{Mehmet Aydın Baytaş}
-\date{2014-09-01}
+\input{front-matter/title}
 
-\maketitle
-%
-% \chapter*{Abstract}
-%
-% \chapter*{Dedication}
-% This dissertation is dedicated to my friend Hasan Sinan Bank, who has shown me how quickly and easily things get done, once you actually sit down and do them.
+\clearpage
+\thispagestyle{empty}
+\mbox{}
+
+\clearpage
+\thispagestyle{empty}
+\input{front-matter/signatures}
+
+\chapter*{Abstract}
+\thispagestyle{empty}
+\input{front-matter/abstract}
+
+\chapter*{Dedication}
+\thispagestyle{empty}
+\input{front-matter/dedication}
+
+\chapter*{Acknowledgements}
+\thispagestyle{empty}
+\input{front-matter/acknowledgements}
 
 \chapter*{Notice of Prior Publication}
-
-Parts of this thesis have been adapted from the following publications:
-
-\begin{quote}
-Mehmet Aydın Baytaş, Yücel Yemez, and Oğuzhan Özcan. 2014. Hotspotizer: End-User Authoring of Mid-Air Gestural Interactions. In Proceedings of the 8th Nordic Conference on Human-Computer Interaction (NordiCHI '14).
-\end{quote}
-
-\begin{quote}
-Mehmet Aydın Baytaş, Yücel Yemez, and Oğuzhan Özcan. 2014. User Interface Paradigms for Visually Authoring Mid-air Gestures: A Survey and a Provocation. In Proceedings of the Workshop on Engineering Gestures for Multimodal Interfaces (EGMI 2014).
-\end{quote}
-
-Additionally, during the course of the research described in this thesis, the author has contributed to the following publication:
-
-\begin{quote}
-Oğuzhan Özcan, Ayça Ünlüer, Mehmet Aydın Baytaş, and Barış Serim. 2012. Rethinking Spherical Media Surfaces by Re-reading Ancient Greek Vases. Paper presented at the workshop "Beyond Flat Displays: Towards Shaped and Deformable Interactive Surfaces," co-located with the ACM International Conference on Interactive Tabletops and Surfaces (ITS '12).
-\end{quote}
-
-% \chapter*{Acknowledgements}
-%
-% Oğuzhan Özcan and Yücel Yemez
-%
-% Tilbe Göksun
-%
-% Evren Yantaç, Ahmet Börütecene, Oğuz Turan Buruk, Damla Çay, Özge Genç, Ahmet Güzererler, Barış Serim, İlker Temuzkuşu
-%
-% Çağatay Başdoğan, Hakan Ürey, Metin Sezgin, Kaan Akşit
-%
-% Above all, I thank my mother and father for, well, everything.
+\thispagestyle{empty}
+\input{front-matter/prior-publication}
 
 \setcounter{tocdepth}{1}
 \tableofcontents
+\thispagestyle{empty}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mainmatter
+\pagestyle{fancy}
 
 \chapter{Introduction}
 \label{chp:introduction}
@@ -275,16 +237,48 @@ Oğuzhan Özcan, Ayça Ünlüer, Mehmet Aydın Baytaş, and Barış Serim. 2012.
 \input{chapters/3-hotspotizer}
 
 \chapter{Hotspotizer: Design and Evaluation}
-\label{chp:description}
+\label{chp:design}
 \input{chapters/4-design}
 
 \chapter{Conclusion and Future Work}
 \label{chp:conclusion}
 \input{chapters/5-conclusion}
 
-\printbibliography
+\printbibliography[heading=bibintoc]
 
 \appendix
-\input{chapters/appendix-attributions}
+
+\chapter{Attributions}
+\input{appendices/attributions}
+
+\chapter{Hotspotizer: End-User Authoring of Mid-Air Gestural Interactions}
+\label{chp:app-paper-1}
+This chapter reproduces the following publication:
+\begin{quote}
+Mehmet Aydın Baytaş, Yücel Yemez, and Oğuzhan Özcan. 2014. Hotspotizer: End-User Authoring of Mid-Air Gestural Interactions. In Proceedings of the 8th Nordic Conference on Human-Computer Interaction (NordiCHI '14).
+\end{quote}
+\includepdf[pages=-,
+            pagecommand={\thispagestyle{fancy}},
+						scale=0.85]{appendices/nordichi.pdf}
+
+\chapter{User Interface Paradigms for Visually Authoring Mid-Air Gestures: A Survey and a Provocation}
+\label{chp:app-paper-2}
+This chapter reproduces the following publication:
+\begin{quote}
+Mehmet Aydın Baytaş, Yücel Yemez, and Oğuzhan Özcan. 2014. User Interface Paradigms for Visually Authoring Mid-air Gestures: A Survey and a Provocation. In Proceedings of the Workshop on Engineering Gestures for Multimodal Interfaces (EGMI 2014).
+\end{quote}
+\includepdf[pages=-,
+            pagecommand={\thispagestyle{fancy}},
+						scale=0.85]{appendices/egmi.pdf}
+
+\chapter{Rethinking Spherical Media Surfaces by Re-reading Ancient Greek Vases}
+\label{chp:app-paper-3}
+This chapter reproduces the following publication:
+\begin{quote}
+Oğuzhan Özcan, Ayça Ünlüer, Mehmet Aydın Baytaş, and Barış Serim. 2012. Rethinking Spherical Media Surfaces by Re-reading Ancient Greek Vases. Paper presented at the workshop "Beyond Flat Displays: Towards Shaped and Deformable Interactive Surfaces," co-located with the ACM International Conference on Interactive Tabletops and Surfaces (ITS '12).
+\end{quote}
+\includepdf[pages=-,
+            pagecommand={\thispagestyle{fancy}},
+						scale=0.85]{appendices/spherical.pdf}
 
 \end{document}
