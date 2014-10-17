@@ -1,8 +1,8 @@
 # End-User Authoring of Mid-Air Gestural Interactions
 
-This repository contains the LaTeX source files for my master's thesis. If you are using LaTex to write a thesis or a paper, you may find in it examples on how to implement various designs and behaviors.
+This repository contains the TeX source files for my master's thesis. If you are using TeX/LaTex to write a thesis or a paper, you may find in it examples on how to implement various designs and behaviors.
 
-As I wrote and designed my thesis, I relied very much on various resources created by the LaTeX community and shared online. I am publishing the source files in order to give back to this community, and lower the barriers of entry into the LaTeX world for my peers. As such, there are some (non-LaTeX) files that are missing from the repo although they have been part of the production process. These are the files involved in producing the figures ([GIMP](http://www.gimp.org/) and Visio files, source photos/screenshots etc.) which reside in a `.gitignore`d `_src` folder; and the (also `.gitignore`d) PDFs of my previous publications that go into the appendices. All LaTeX code is included.
+As I wrote and designed my thesis, I relied very much on various resources created by the TeX/LaTeX community and shared online. I am publishing the source files in order to give back to this community, and lower the barriers of entry into the TeX world for my peers. As such, there are some (non-TeX) files that are missing from the repo although they have been part of the production process. These are the files involved in producing the figures ([GIMP](http://www.gimp.org/) and Visio files, source photos/screenshots etc.) which reside in a `.gitignore`d `_src` folder; and the (also `.gitignore`d) PDFs of my previous publications that go into the appendices. All TeX code is included.
 
 The **master** branch contains the source files I used to compile the version of my thesis that I submitted to the Koç University [Graduate School of Social Sciences and Humanities](http://gsssh.ku.edu.tr). In the future I may create another branch that features more comments and some refactoring. For now, the **master** branch is all there is.
 
@@ -10,13 +10,13 @@ The **master** branch contains the source files I used to compile the version of
 
 I wrote my thesis on a Mac with a full-blown installation of the [MacTex](https://tug.org/mactex/) (2014 version) distribution.
 
-The file `compile` contains a script that automates the compilation process and removes LaTeX-generated files upon successful compilation. To compile on a Mac with MacTex installed; download the repository, comment out the `\includepdf` commands at the end of the `main.tex` file, and run `source compile`. (See [this thread on Stack Overflow](http://stackoverflow.com/questions/13786499/source-vs-sh-in-linux-what-is-the-difference) to learn about `source`.)
+The file `compile` contains a script that automates the compilation process and removes TeX-generated files upon successful compilation. To compile on a Mac with MacTex installed; download the repository, comment out the `\includepdf` commands at the end of the `main.tex` file, and run `source compile`. (See [this thread on Stack Overflow](http://stackoverflow.com/questions/13786499/source-vs-sh-in-linux-what-is-the-difference) to learn about `source`.)
 
-Please note that the code, as well as the `compile` script, have never been tested on any computer other than my own. Compilation may fail on your computer, for whatever reason. Since the whole purpose of the code and the script is to exemplify LaTeX use, this doesn't worry me at all.
+Please note that the code, as well as the `compile` script, have never been tested on any computer other than my own. Compilation may fail on your computer, for whatever reason. Since the whole purpose of the code and the script is to exemplify TeX use, this doesn't worry me at all.
 
 ## IP stuff
 
-The content of the manuscript is subject to Koç University's policies on intellectual property rights (see [here](http://gsssh.ku.edu.tr/rules-regulations) and [here](http://vprd.ku.edu.tr/research/grand)). Various bits and pieces that have somehow become part of the thesis are subject to various other policies, which should be indicated in the relevant parts of the text. Please observe these policies, along with some basic principles of academic honesty and common human decency, as you make use of this repository. As a simple rule of thumb: copying LaTeX code is cool, copying content is not.
+The content of the manuscript is subject to Koç University's policies on intellectual property rights (see [here](http://gsssh.ku.edu.tr/rules-regulations) and [here](http://vprd.ku.edu.tr/research/grand)). Various bits and pieces that have somehow become part of the thesis are subject to various other policies, which should be indicated in the relevant parts of the text. Please observe these policies, along with some basic principles of academic honesty and common human decency, as you make use of this repository. As a simple rule of thumb: stealing TeX code is cool, stealing content is not.
 
 Conversely; if my work somehow makes use of content that belongs to you (or an organization you are affiliated with), in a way that is not condoned by you (or the organization you are affiliated with); please let me know, and I will do my best to observe your policies.
 
