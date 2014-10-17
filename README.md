@@ -18,7 +18,7 @@ Please note that the code, as well as the `compile` script, have never been test
 
 The content of the manuscript is subject to Koç University's policies on intellectual property rights (see [here](http://gsssh.ku.edu.tr/rules-regulations) and [here](http://vprd.ku.edu.tr/research/grand)). Various bits and pieces that have somehow become part of the thesis are subject to various other policies, which should be indicated in the relevant parts of the text. Please observe these policies, along with some basic principles of academic honesty and common human decency, as you make use of this repository. As a simple rule of thumb: stealing TeX code is cool, stealing content is not.
 
-Conversely; if my work somehow makes use of content that belongs to you (or an organization you are affiliated with), in a way that is not condoned by you (or the organization you are affiliated with); please let me know, and I will do my best to observe your policies.
+Conversely; if my work somehow makes use of content that belongs to you (or an organization you are affiliated with), in a way that you (or the organization you are affiliated with) do(es) not condone; please let me know, and I will do my best to observe your policies.
 
 ## Thesis Info
 
