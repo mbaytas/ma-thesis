@@ -4,7 +4,7 @@ This repository contains the LaTeX source files for my master's thesis. If you a
 
 As I wrote and designed my thesis, I relied very much on various resources created by the LaTeX community and shared online. I am publishing the source files in order to give back to this community, and lower the barriers of entry into the LaTeX world for my peers. As such, there are some (non-LaTeX) files that are missing from the repo although they have been part of the production process. These are the files involved in producing the figures ([GIMP](http://www.gimp.org/) and Visio files, source photos/screenshots etc.) which reside in a `.gitignore`d `_src` folder; and the (also `.gitignore`d) PDFs of my previous publications that go into the appendices. All LaTeX code is included.
 
-The **master** branch contains the source files I used to compile the version of my thesis that I submitted to the Koç University [Graduate School of Social Sciences and Humanities](http://gsssh.ku.edu.tr). In the future I may create another branch that features more comments and some refactoring. For now, **master** branch is all there is.
+The **master** branch contains the source files I used to compile the version of my thesis that I submitted to the Koç University [Graduate School of Social Sciences and Humanities](http://gsssh.ku.edu.tr). In the future I may create another branch that features more comments and some refactoring. For now, the **master** branch is all there is.
 
 ## Compilation
 
